@@ -43,9 +43,6 @@ This project is a simple library management system implemented in Java. It allow
 ## Usage
 - Follow the on-screen instructions to add or list books.
 - Enter `0` to exit the application.
-
-## Contributing
-Contributions are welcome! Please fork the repository and submit a pull request.
-
+  
 ## License
 This project is licensed under the MIT License.
