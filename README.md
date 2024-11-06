@@ -7,6 +7,7 @@ This project is a simple library management system implemented in Java. It allow
 - Add new books to the library
 - List all books in the library
 - Sort books by title
+- Delete books if neccesary
 - Observer pattern to notify changes
 - Builder pattern for creating book instances
 - Decorator pattern for extending book functionality
