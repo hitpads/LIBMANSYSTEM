@@ -1,6 +1,7 @@
 package behavioral;
 
 import model.Book;
+
 import java.util.List;
 
 public interface BookSortStrategy {

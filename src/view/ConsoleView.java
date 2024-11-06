@@ -4,7 +4,6 @@ import behavioral.LibraryObserver;
 import behavioral.BookSortStrategy;
 import model.Book;
 import model.BookBuilder;
-import structural.BookDecorator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,6 +20,7 @@ public class ConsoleView {
     public void showMainMenu() {
         System.out.println("1. Add Book");
         System.out.println("2. List Books");
+        System.out.println("3. Delete Book");
         System.out.println("0. Exit");
     }
 
@@ -29,25 +29,28 @@ public class ConsoleView {
         String title = scanner.next();
         System.out.print("Enter author: ");
         String author = scanner.next();
-        Book newBook = new BookBuilder().setTitle(title).setAuthor(author).build();
-        BookDecorator decoratedBook = new BookDecorator(newBook) {
-            @Override
-            public String getDescription() {
-                return newBook.getTitle() + " by " + newBook.getAuthor();
-            }
-        };
-        libraryObserver.notifyObservers("New book added: " + decoratedBook.getDescription());
-        return decoratedBook;
+        System.out.print("Enter type (Physical/Digital): ");
+        String type = scanner.next();
+        Book newBook = new BookBuilder().setTitle(title).setAuthor(author).setType(type).build();
+        libraryObserver.notifyObservers("New book added: " + newBook.getTitle() + " (" + newBook.getType() + ")");
+        return newBook;
+    }
+
+    public void showBooks(List<Book> books) {
+        bookSortStrategy.sort(books);
+        for (Book book : books) {
+            System.out.println(book.getTitle() + " by " + book.getAuthor() + " (" + book.getType() + ")");
+        }
     }
 
     public int getUserInput() {
         return scanner.nextInt();
     }
 
-    public void showBooks(List<Book> books) {
-        bookSortStrategy.sort(books);
-        for (Book book : books) {
-            System.out.println(book.getTitle() + " by " + book.getAuthor());
-        }
+    public void deleteBook(List<Book> books) {
+        System.out.println("Enter the title of the book to delete:");
+        String title = scanner.next();
+        books.removeIf(book -> book.getTitle().equalsIgnoreCase(title));
+        System.out.println("Book deleted if it existed.");
     }
 }

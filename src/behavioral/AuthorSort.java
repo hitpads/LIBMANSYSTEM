@@ -5,9 +5,9 @@ import model.Book;
 import java.util.Collections;
 import java.util.List;
 
-public class TitleSort implements BookSortStrategy {
+public class AuthorSort implements BookSortStrategy {
     @Override
     public void sort(List<Book> books) {
-        Collections.sort(books, (a, b) -> a.getTitle().compareTo(b.getTitle()));
+        Collections.sort(books, (a, b) -> a.getAuthor().compareTo(b.getAuthor()));
     }
 }

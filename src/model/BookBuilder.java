@@ -3,6 +3,7 @@ package model;
 public class BookBuilder {
     private String title;
     private String author;
+    private String type;
 
     public BookBuilder setTitle(String title) {
         this.title = title;
@@ -14,7 +15,16 @@ public class BookBuilder {
         return this;
     }
 
+    public BookBuilder setType(String type) {
+        this.type = type;
+        return this;
+    }
+
     public Book build() {
-        return new Book(title, author);
+        if ("Digital".equalsIgnoreCase(type)) {
+            return new DigitalBook(title, author);
+        } else {
+            return new PhysicalBook(title, author);
+        }
     }
 }

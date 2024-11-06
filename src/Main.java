@@ -3,6 +3,7 @@ import behavioral.BookObserver;
 import behavioral.TitleSort;
 import view.ConsoleView;
 import model.Book;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,9 @@ public class Main {
                     break;
                 case 2:
                     consoleView.showBooks(books);
+                    break;
+                case 3:
+                    consoleView.deleteBook(books);
                     break;
                 case 0:
                     System.exit(0);
